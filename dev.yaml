@@ -1,0 +1,14 @@
+app_name: casa-codigo
+port: 8080
+db:
+  host: 127.0.0.1
+  name: mercado-livre
+  user: root
+  pass: 171191
+  port: 3306
+  params: 
+    charset: utf8mb4
+    loc: Local
+  life_time: 60
+  idle_conn: 5
+  max_open_conn: 5
