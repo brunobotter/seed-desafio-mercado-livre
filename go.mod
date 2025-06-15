@@ -1,10 +1,12 @@
 module github.com/brunobotter/mercado-livre
 
-go 1.24.3
+go 1.24
 
 require (
 	github.com/go-sql-driver/mysql v1.9.2
+	github.com/golang/mock v1.6.0
 	github.com/spf13/viper v1.20.1
+	golang.org/x/crypto v0.32.0
 )
 
 require (
@@ -27,7 +29,6 @@ require (
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.12 // indirect
 	golang.org/x/arch v0.8.0 // indirect
-	golang.org/x/crypto v0.32.0 // indirect
 	golang.org/x/net v0.33.0 // indirect
 	google.golang.org/protobuf v1.36.1 // indirect
 )
