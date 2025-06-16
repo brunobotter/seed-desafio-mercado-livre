@@ -6,10 +6,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func InitializeUserRouter(router *gin.Engine, deps *configs.Deps) {
+func InitializeCategoryRouter(router *gin.Engine, deps *configs.Deps) {
 	handler.InitializeHandler(deps)
-	v1 := router.Group("api/v1/users")
+	v1 := router.Group("api/v1/categories")
 	{
-		v1.POST("/register", handler.UserController.RegisterNewUser)
+		v1.POST("/save", handler.CategoryController.SaveNewCategory)
 	}
 }

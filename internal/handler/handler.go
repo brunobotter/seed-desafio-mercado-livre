@@ -6,9 +6,11 @@ import (
 )
 
 var (
-	UserControleler *controller.UserControleler
+	UserController     *controller.UserControleler
+	CategoryController *controller.CategoryController
 )
 
 func InitializeHandler(deps *configs.Deps) {
-	UserControleler = controller.NewUserController(deps.Svc)
+	UserController = controller.NewUserController(deps.Svc)
+	CategoryController = controller.NewCategoryController(deps.Svc)
 }

@@ -9,5 +9,6 @@ import (
 func Initialize(deps *configs.Deps) {
 	gin := gin.Default()
 	router.InitializeUserRouter(gin, deps)
+	router.InitializeCategoryRouter(gin, deps)
 	gin.Run(":8080")
 }
