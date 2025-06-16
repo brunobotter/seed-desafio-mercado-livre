@@ -1,24 +1,19 @@
-# Variáveis
-MOCKGEN=mockgen
-MOCK_DIR=internal/mock
-CONTRACT_DIR=internal/domain/contract
+MOCKGEN := $(shell go env GOPATH)/bin/mockgen
 
-# Targets
-
-.PHONY: all mocks test install-mockgen tidy
+.PHONY: all tidy mocks test clean
 
 all: tidy mocks test
-
-install-mockgen:
-	go install github.com/golang/mock/mockgen@latest
 
 tidy:
 	go mod tidy
 
 mocks:
 	@echo "Gerando mocks..."
-	$(MOCKGEN) -source=$(CONTRACT_DIR)/service.go -destination=$(MOCK_DIR)/service_mock.go -package=mock
-	$(MOCKGEN) -source=$(CONTRACT_DIR)/repo.go -destination=$(MOCK_DIR)/repo_mock.go -package=mock
+	$(MOCKGEN) -source=internal/domain/contract/service.go -destination=internal/mock/service_mock.go -package=mock
+	$(MOCKGEN) -source=internal/domain/contract/repo.go -destination=internal/mock/repo_mock.go -package=mock
 
 test:
 	go test ./... -v
+
+clean:
+	rm -rf internal/mock/*.go
