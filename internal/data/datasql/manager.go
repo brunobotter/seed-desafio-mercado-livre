@@ -21,7 +21,9 @@ var (
 )
 
 type Conn struct {
-	db *sql.DB
+	db       *sql.DB
+	user     *userRepository
+	category *categoryRepository
 }
 
 func Instance(cfg *mapping.Config) (contract.DataManager, error) {
@@ -33,7 +35,8 @@ func Instance(cfg *mapping.Config) (contract.DataManager, error) {
 		}
 
 		instance = &Conn{db: db}
-
+		instance.user = &userRepository{db, instance}
+		instance.category = &categoryRepository{db, instance}
 	})
 	return instance, connErr
 }
@@ -72,4 +75,12 @@ func getMySqlConfig(cfg *mapping.Config) *mysql.Config {
 		Params:               cfg.DB.Params,
 	}
 	return &mysqlConfig
+}
+
+func (c *Conn) UserRepo() contract.UserRepository {
+	return c.user
+}
+
+func (c *Conn) CategoryRepo() contract.CategoryRepository {
+	return c.category
 }
