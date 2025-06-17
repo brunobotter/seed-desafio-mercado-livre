@@ -8,8 +8,8 @@ import (
 	"github.com/brunobotter/mercado-livre/internal/domain/service"
 	"github.com/brunobotter/mercado-livre/internal/mock"
 	"github.com/brunobotter/mercado-livre/internal/request"
-	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
+	"go.uber.org/mock/gomock"
 )
 
 func TestUserService_Register_Success(t *testing.T) {
